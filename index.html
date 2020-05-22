@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="currying/currying1.js"></script>
+    <script type="text/javascript" src="currying/currying2.js"></script>
+    <title>Curso de Java Script ECMA S6</title>
+</head>
+<body>
+    <h1>Curso de Java Script ECMA S6</h1>
+    <h2>Currrying</h2>
+    <p>Uma única função que recebe um parâmetro continua retornando uma nova função, salvando umdos valores na memória para reutilização.</p>
+    <div>
+        <p>function soma(a, b)<br>
+            {<br>
+                return a + b;<br>
+            }<br>
+            <br>
+            console.log(soma(2, 3));<br>
+            console.log(soma(2, 4));<br>
+            console.log(soma(2, 5));<br>
+            console.log(soma(2, 6));
+            </p>
+    </div>
+
+    <div>
+        <p>function soma(a)<br>
+            {<br>
+                return function(b)<br>
+                {<br>
+                    return a + b;<br>
+                }<br>
+            }<br>
+            <br>
+            const soma2 = soma(2);<br>
+            <br>
+            console.log(soma2(3));<br>
+            console.log(soma2(4));<br>
+            console.log(soma2(5));<br>
+            console.log(soma2(6));</p>
+    </div>
+</body>
+</html>
