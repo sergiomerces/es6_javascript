@@ -1,36 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="closure/closure1.js"></script>
     <script type="text/javascript" src="currying/currying1.js"></script>
     <script type="text/javascript" src="currying/currying2.js"></script>
+    <script type="text/javascript" src="hoisting/hoisting.js"></script>
+    <script type="text/javascript" src="hoisting/hoisting2.js"></script>
+    <script type="text/javascript" src="imutabilidade/imutabilidade.js"></script>
+    <script type="text/javascript" src="imutabilidade/imutabilidade2.js"></script>
     <title>Curso de Java Script ECMA S6</title>
 </head>
+
 <body>
     <h1>Curso de Java Script ECMA S6</h1>
-    <h2>Currrying</h2>
-    <p>Uma única função que recebe um parâmetro continua retornando uma nova função, salvando umdos valores na memória para reutilização.</p>
+    <h2>Closure</h2>
+    <p>Capacidade da variável lembrar o escopo onde foi criada, tratamento de escopo em JavaScript.</p>
+    <div>
+        <p>
+            function init() {<br>
+            const exemplo = 'Essa variável';<br>
+            <br>
+            return function () {<br>
+            console.log('1- O valor da variável exemplo é: ${exemplo}.');<br>
+            <br>
+            return function () {<br>
+            console.log('2- O valor da variável exemplo é: ${exemplo}.');<br>
+            <br>
+            return function () {<br>
+            console.log('3- O valor da variável exemplo é: ${exemplo}.');<br>
+            }<br>
+            }<br>
+            }<br>
+            }<br>
+        </p>
+    </div>
+    <h2>Currying</h2>
+    <p>Uma única função que recebe um parâmetro continua retornando uma nova função, salvando umdos valores na memória
+        para reutilização.</p>
     <div>
         <p>function soma(a, b)<br>
             {<br>
-                return a + b;<br>
+            return a + b;<br>
             }<br>
             <br>
             console.log(soma(2, 3));<br>
             console.log(soma(2, 4));<br>
             console.log(soma(2, 5));<br>
             console.log(soma(2, 6));
-            </p>
+        </p>
     </div>
 
     <div>
         <p>function soma(a)<br>
             {<br>
-                return function(b)<br>
-                {<br>
-                    return a + b;<br>
-                }<br>
+            return function(b)<br>
+            {<br>
+            return a + b;<br>
+            }<br>
             }<br>
             <br>
             const soma2 = soma(2);<br>
@@ -40,5 +69,88 @@
             console.log(soma2(5));<br>
             console.log(soma2(6));</p>
     </div>
+    <h2>Hoisting</h2>
+    <p>Levantar ou suspender algo elevar/içar variáveis ao escopo que ela está.</p>
+    <p>Com variável apenas sua declaração é elevada, não sua atribução. No uso com funções tanto decaração como
+        atribuições são elevadas.</p>
+    <h3>Hoisting com varável</h3>
+    <div>
+        <p>
+            function fn() {<br>
+            console.log(text);<br>
+            var text = 'Exemplo';<br>
+            console.log(text);<br>
+            }<br>
+            <br>
+            fn();
+        </p>
+    </div>
+    <h3>Hoisting com função</h3>
+    <div>
+        <p>
+            function fn() {<br>
+            log('Hoisting da função');<br>
+            <br>
+            function log(value) {<br>
+            console.log(value);<br>
+            }<br>
+            }<br>
+            <br>
+            fn();
+        </p>
+    </div>
+    <h2>Imutabilidade</h2>
+    <p>
+        Variáveis, arrays e objetos não são atualizados, usa-se de concatenação, cópia ou criação um novo elemento e
+        conserva-se o original.
+    </p>
+    <div>
+        <h3>Imutabilidade 1</h3>
+        <p>
+            const user = {<br>
+            name: 'Sérgio',<br>
+            lastName: 'da Costa Mercês'<br>
+            };<br>
+            <br>
+            function getUserWithFullName(user){<br>
+            return{<br>
+            user,<br>
+            fullName: '${user.name} ${user.lastName}'<br>
+            }<br>
+            }<br>
+            <br>
+            const userWithFullName = getUserWithFullName(user);<br>
+            console.log(userWithFullName);<br>
+        </p>
+    </div>
+    <div>
+        <h3>Imutabilidade 2</h3>
+        <p>
+            const students = [<br>
+            {<br>
+            name: 'Grace',<br>
+            grade: 7<br>
+            },<br>
+            {<br>
+            name: 'Jennifer',<br>
+            grade: 4<br>
+            },<br>
+            {<br>
+            name: 'Paul',<br>
+            grade: 10<br>
+            }<br>
+            ];<br>
+            <br>
+            function getApprovedStudents(studentList) {<br>
+            return studentList.filter(student => student.grade >= 7);<br>
+            }<br>
+            <br>
+            console.log('Alunos aprovados:');<br>
+            console.log(getApprovedStudents(students));<br>
+            console.log('\nLista de alunos:');<br>
+            console.log(students);
+        </p>
+    </div>
 </body>
+
 </html>

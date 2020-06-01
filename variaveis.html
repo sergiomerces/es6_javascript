@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/JavaScript" src="variveis/variaveis1.js"></script>
+    <script type="text/JavaScript" src="variveis/variaveis2.js"></script>
+    <script type="text/JavaScript" src="variveis/variaveis3.js"></script>
+    <script type="text/JavaScript" src="variveis/variaveis4.js"></script>
+    <title>Variáveis & Tipos em JavaScript</title>
+</head>
+
+<body>
+    <h2>Escopo de Variáveis</h2>
+    <ul>
+        <li>var: variável global</li>
+        <li>let: variável de bloco</li>
+        <li>const: variável de bloco</li>
+    </ul>
+    <p>
+        Escopo em JavaScript é quando digitamos algo dentro de {}. O mesmo vale para if, while, for ou escopo de
+        function.
+    </p>
+    <h3>Declarando variáeis e atribuindo valores</h3>
+    <p>
+        var nameVar = 'Jobs';<br>
+        let nameLet = 'Gates';<br>
+        const nameConst = 'Torvalds';<br>
+        <br>
+        console.log('nameVar: ${nameVar}');<br>
+        console.log('nameLet: ${nameLet}');<br>
+        console.log('nameConst: ${nameConst}');
+    </p>
+    <p>
+        var teste = 'Opa'; //escopo global<br>
+        <br>
+        window.teste >> 'Opa'<br>
+    </p>
+    <p>
+        O mesmo não aconte quando usamos let e const.
+    </p>
+    <h3>Usando apenas variavel global</h3>
+    <p>
+        var test = 'example';<br>
+        <br>
+        (() => {<br>
+        console.log('Valor dentro da função "${test}"');<br>
+        <br>
+        if (true) {<br>
+        var test = 'example';<br>
+        console.log('Valor dentro do if "${test}"');<br>
+        }<br>
+        <br>
+        console.log('Valor após a execução do if "${test}"');<br>
+        })();
+    </p>
+    <h3>com variável de bloco</h3>
+    <p>
+        (() => {<br>
+        let test = 'example';<br>
+        console.log('Valor dentro da função "${test}"');<br>
+        <br>
+        if (true) {<br>
+        let test = 'example';<br>
+        console.log('Valor dentro do if "${test}"');<br>
+        }<br>
+        <br>
+        console.log('Valor após a execução do if "${test}"');<br>
+        })();
+    </p>
+</body>
+
+</html>
